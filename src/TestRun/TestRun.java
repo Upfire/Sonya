@@ -40,6 +40,8 @@ public class TestRun {
         game.makeBet("100");
         game.dealButt();
         game.standButt();
+        game.leaveSteat();
+       // game.waitOtherPlayers();
         game.closeGameButn();
 
 

@@ -108,9 +108,9 @@ public class GamePage {
 
 
     public void waitOtherPlayers ()
-    {   WebDriverWait wait = new WebDriverWait(driver, 15);
+    {   WebDriverWait wait = new WebDriverWait(driver, 60);
         //WebElement waitOtherPlayers = driver.findElement(By.xpath("//*[@class=' progress-bar']"));
-        wait.until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(By.className(" progress-bar"))));
+        wait.until(ExpectedConditions.not(ExpectedConditions.visibilityOfElementLocated(By.className(" progress-bar"))));
         //waitOtherPlayers.click();
         test.log(LogStatus.INFO, "Make deal in game");
     }
@@ -125,16 +125,47 @@ public class GamePage {
     {
         WebDriverWait wait = new WebDriverWait(driver, 15);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='buttonsLayer']/div[3]/button"))).click();
-        driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[3]/button"));
-        test.log(LogStatus.INFO, "Player stand up");
+        try
+        {
+            Thread.sleep(10000);
+        }
+        catch (InterruptedException e){}
+        driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[3]/button")).click();
+        test.log(LogStatus.INFO, "Player performed Stand");
     }
+
+    public void leaveSteat ()
+    {
+        try {
+            Thread.sleep(10000);
+        }
+        catch (InterruptedException e)
+        {}
+        Boolean isPresent = driver.findElements(By.xpath("//div[@id='buttonsLayer']/div[6]/button")).size()>0;
+        Boolean StandBunt =  driver.findElements(By.xpath("//div[@id='buttonsLayer']/div[3]/button")).size()>0;
+        if (StandBunt == false && isPresent ==true )
+        {
+            driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[6]/button")).click();
+            test.log(LogStatus.INFO, "Player stand up");
+        }
+        //test.log(LogStatus.INFO, "Player stand up");
+    }
+
 
     public void closeGameButn()
     {
       //  WebDriverWait wait = new WebDriverWait(driver, 15);
      //   wait.until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(By.className("takeSit"))));
-        driver.findElement(By.className("hero-section__close-button")).click();
-        test.log(LogStatus.INFO, "Pressed close game button");
-
+        //By.xpath("//div[@id='buttonsLayer']/div[4]/button")
+        Boolean isPresent = driver.findElements(By.xpath("//div[@id='buttonsLayer']/div[6]/button")).size()>0;
+        if (isPresent == true) {
+            driver.findElement(By.xpath("//div[@class='hero-section__content-frame hero-section__iframe']/div[@class='hero-section__close-button']")).click();
+            test.log(LogStatus.INFO, "Pressed close game button");
+        }
+        try{
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e)
+        {}
     }
 }
