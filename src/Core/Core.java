@@ -18,7 +18,7 @@ public class Core {
 
         if (browserName.equalsIgnoreCase("Chrome"))
         {
-            System.setProperty("webdriver.chrome.driver", "C://libs//chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\ylian\\IdeaProjects\\Sonya\\src\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
             test.log(LogStatus.INFO, "Chrome driver initialised");
             driver.manage().window().maximize();

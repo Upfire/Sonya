@@ -96,9 +96,16 @@ public class GamePage {
     {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='buttonsLayer']/div[4]/button")));//div[@id='depth3']/div/div
-        driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[4]/button")).click();
-        test.log(LogStatus.INFO, "Make deal in game");
-    }
+        try {
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e){}
+            driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[4]/button")).click();
+            test.log(LogStatus.INFO, "Make deal in game");
+        }
+
+
+
 
     public void waitOtherPlayers ()
     {   WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -117,8 +124,8 @@ public class GamePage {
     public void standButt()
     {
         WebDriverWait wait = new WebDriverWait(driver, 15);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='buttonsLayer']/div[3]/button")));
-        driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[3]/button")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='buttonsLayer']/div[3]/button"))).click();
+        driver.findElement(By.xpath("//div[@id='buttonsLayer']/div[3]/button"));
         test.log(LogStatus.INFO, "Player stand up");
     }
 

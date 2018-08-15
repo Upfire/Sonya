@@ -39,8 +39,6 @@ public class TestRun {
         game.checkIfPrvRoundEnd ();
         game.makeBet("100");
         game.dealButt();
-       // game.waitEndOfRound();
-      //  game.waitOtherPlayers();
         game.standButt();
         game.closeGameButn();
 
