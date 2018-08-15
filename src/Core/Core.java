@@ -29,7 +29,7 @@ public class Core {
         }
         else if (browserName.equalsIgnoreCase("FireFox"))
         {
-            System.setProperty("webdriver.chrome.driver", "C://libs//geckodriver.exe");
+            System.setProperty("webdriver.chrome.driver", "src/drivers/geckodriver.exe");
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
